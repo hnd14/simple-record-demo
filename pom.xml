@@ -5,11 +5,14 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.hnd14.demo</groupId>
+    <groupId>hnd14</groupId>
     <artifactId>records-demo</artifactId>
     <version>1.0-snapshot</version>
     <packaging>jar</packaging>
-
+    <properties> 
+		<maven.compiler.source>21</maven.compiler.source>
+	    <maven.compiler.target>21</maven.compiler.target>
+	</properties> 
     <name>Record Demo</name>
 
     <dependencies>
