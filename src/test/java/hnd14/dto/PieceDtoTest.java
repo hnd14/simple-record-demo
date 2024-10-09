@@ -9,18 +9,8 @@ import hnd14.dto.enums.Side;
 
 public class PieceDtoTest {
     @Test
-    void test_getter() {
-        // Record can be generated with a constructor with all arguments
-        var dto = new PieceDto(Side.BLACK, PieceType.PAWN, "E2");
-
-        // We can access record fields through getters 
-        assertThat(dto.position()).isEqualTo("E2");
-        assertThat(dto.side()).isEqualTo(Side.BLACK);
-        assertThat(dto.type()).isEqualTo(PieceType.PAWN);
-    }
-
-    @Test
     void test_builderAndEquals(){
+        // Record can be generated with a constructor with all arguments
         var dto1 = new PieceDto(Side.BLACK, PieceType.PAWN, "E2");
         // Thanks to lombok builder annotation, we can also construct a record with a builder
         var dto2 = PieceDto.builder().side(Side.BLACK).type(PieceType.PAWN).position("E2").build();
@@ -28,11 +18,22 @@ public class PieceDtoTest {
         // Two records with all equal fields are equal
         assertThat(dto1).isEqualTo(dto2);
     }
+    
+    @Test
+    void test_getter() {
+        var dto = PieceDto.builder().side(Side.BLACK).type(PieceType.PAWN).position("E2").build();
+
+        // We can access record fields through getters 
+        assertThat(dto.position()).isEqualTo("E2");
+        assertThat(dto.side()).isEqualTo(Side.BLACK);
+        assertThat(dto.type()).isEqualTo(PieceType.PAWN);
+    }
+
 
     @Test
     void test_toBuilder(){
         // toBuilder is a way to create a new record based on an existing record
-        var dto1 = new PieceDto(Side.BLACK, PieceType.PAWN, "E2");
+        var dto1 = PieceDto.builder().side(Side.BLACK).type(PieceType.PAWN).position("E2").build();
         var dto2 = dto1.toBuilder().position("G5").build();
 
         // The field provided to the builder is set to the latest value
